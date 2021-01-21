@@ -3,7 +3,7 @@
     pageEncoding="UTF-8"%>
 
 <header>
-    <a href ="MainServlet"><img src="common/img/kintaisisutemu.png"></a>
+    <a href ="/MainServlet"><img src="common/img/kintaisisutemu.png"></a>
     <nav class="gnav">
         <ul class="menu">
             <li>

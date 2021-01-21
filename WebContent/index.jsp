@@ -4,11 +4,14 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" href="common/css/style.css">
+
     <title>TestApp</title>
 </head>
 <body>
-<%@ include file="/WEB-INF/jsp/header.jsp"%>
 
+    <div>
+        <h1>ようこそ ゲスト さん</h1>
+        <a href="./MainServlet">ログインページへ＞＞</a>
+    </div>
 </body>
 </html>
