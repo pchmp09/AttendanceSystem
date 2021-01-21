@@ -8,7 +8,7 @@
     <title>TestApp</title>
 </head>
 <body>
-<%@ include file="../../header.jsp"%>
+<%@ include file="/WEB-INF/jsp/header.jsp"%>
 
 </body>
 </html>
