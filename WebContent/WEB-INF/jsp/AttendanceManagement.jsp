@@ -36,10 +36,10 @@ if (attendanceTable == null) {
 }
 
 if(attendanceSession.isSignOn() == false){
-	response.sendRedirect("LoginServlet");
+	response.sendRedirect("./LoginServlet");
 	return;
 }else if(attendanceSession.isManager() == false){
-	response.sendRedirect("ManagerMainServlet");
+	response.sendRedirect("./ManagerMainServlet");
 	return;
 }
 
@@ -53,7 +53,7 @@ if(attendanceSession.isSignOn() == false){
 <body>
 <%@ include file="header.jsp"%>
 
-<form action="AttendanceManagementServlet?mode=list" method="post">
+<form action="./AttendanceManagementServlet?mode=list" method="post">
 <select name ="empNum">
 <%
 for(int i = 0; i < employees.size(); i++){ %>
@@ -112,13 +112,13 @@ for(int i = 1; i <= 12; i++){%>
 			<td><%out.print(attendances.get(i).getWorkTime()					== null ? "---" : attendances.get(i).eachDurationToString(attendances.get(i).getWorkTime()));%></td>
 			<td><%out.print(attendances.get(i).getMidnightWorkTime()	== null ? "---" : attendances.get(i).eachDurationToString(attendances.get(i).getMidnightWorkTime()));%></td>
 			<td>
-				<form action="AttendanceUpdate.jsp" method="post" >
+				<form action="./AttendanceUpdateServlet" method="post" >
 				<input type="hidden" name="i" value="<%=i %>"/>
 				<input type="submit" value="編集" />
 				</form>
 			</td>
 			<td>
-				<form action="AttendanceDelete.jsp" method="post">
+				<form action="./AttendanceDeleteServlet" method="post">
 				<input type="hidden" name="i" value="<%=i %>"/>
 				<input type="submit" value="削除" />
 				</form>

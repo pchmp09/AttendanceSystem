@@ -33,14 +33,14 @@ if (attendanceTable == null) {
 	session.setAttribute("attendanceSession", attendanceSession);
 }
 
-int i =Integer.parseInt(request.getParameter("i"));
+int i = (Integer)session.getAttribute("i");
 session.setAttribute("i", i);
 
 if(attendanceSession.isSignOn() == false){
-	response.sendRedirect("LoginServlet");
+	response.sendRedirect("./LoginServlet");
 	return;
 }else if(attendanceSession.isManager() == false){
-	response.sendRedirect("ManagerMainServlet");
+	response.sendRedirect("./ManagerMainServlet");
 	return;
 }
 
@@ -54,7 +54,7 @@ if(attendanceSession.isSignOn() == false){
 <body>
 <%@ include file="header.jsp"%>
 
-<form action="AttendanceManagementServlet?mode=update" method="post">
+<form action="./AttendanceManagementServlet?mode=update" method="post">
 <table border="1">
 	<tr>
 		<th>日　　付</th>
