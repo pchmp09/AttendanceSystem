@@ -19,14 +19,15 @@ if (employees == null) {
 	employees = new ArrayList<Employee>();
 	session.setAttribute("employees", employees);
 }
-int i = Integer.parseInt(request.getParameter("i"));
+
+int i = (Integer)session.getAttribute("i");
 session.setAttribute("i", i);
 
 if(attendanceSession.isSignOn() == false){
-	response.sendRedirect("LoginServlet");
+	response.sendRedirect("./LoginServlet");
 	return;
 }else if(attendanceSession.isManager() == false){
-	response.sendRedirect("ManagerMainServlet");
+	response.sendRedirect("./ManagerMainServlet");
 	return;
 }
 %>
@@ -39,7 +40,7 @@ if(attendanceSession.isSignOn() == false){
 <body>
 <%@ include file="header.jsp"%>
 
-<form action="EmployeeManagementServlet?mode=update" method="post">
+<form action="./EmployeeManagementServlet?mode=update" method="post">
 <table>
 	<tr>
 		<th>ID</th>

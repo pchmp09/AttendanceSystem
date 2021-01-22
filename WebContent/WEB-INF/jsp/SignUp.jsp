@@ -11,8 +11,7 @@
 		session.setAttribute("attendanceSession", attendanceSession);
 	}
 
-	request.setCharacterEncoding("UTF-8");
-	String e = (String)request.getAttribute("exception");
+
 
 %>
 <html>
@@ -29,13 +28,12 @@
 	if(attendanceSession.isSignOn() == true){
 %>
 ログイン成功
-<a href="MainServlet">topへ</a>
+<a href="./MainServlet">topへ</a>
 <%
 } else{
 %>
 ログイン失敗
-<%System.out.print(e);%>
-<a href="MainServlet">topへ</a>
+<a href="./MainServlet">topへ</a>
 <%
 }
 %>

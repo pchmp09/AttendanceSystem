@@ -21,13 +21,13 @@
 </head>
 <body>
 <div>
-	<form action="SignUpServlet" method="post">
+	<form action="./SignUpServlet" method="post">
 		id入力<input type="text" name="id" value="00000000" size=20 maxlength="18" />
 		<input type="submit" name="Logout" value="ログイン" />
 	</form>
 <br>
 <br>
-<a href="MainServlet">メインページに戻る</a>
+<a href="./MainServlet">メインページに戻る</a>
 
 </div>
 </body>

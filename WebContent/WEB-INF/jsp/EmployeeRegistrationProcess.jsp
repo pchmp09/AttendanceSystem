@@ -15,10 +15,10 @@
 	Employee employee = (Employee)request.getAttribute("employee");
 
 	if(attendanceSession.isSignOn() == false){
-		response.sendRedirect("LoginServlet");
+		response.sendRedirect("./LoginServlet");
 		return;
 	}else if(attendanceSession.isManager() == false){
-		response.sendRedirect("ManagerMainServlet");
+		response.sendRedirect("./ManagerMainServlet");
 		return;
 	}
 %>
@@ -33,10 +33,10 @@
 if(add_success){
 %>
 登録完了<br>
-<a href="EmployeeManagementServlet">戻る</a>
+<a href="./EmployeeManagementServlet">戻る</a>
 <%}else{ %>
 登録失敗<br>
-<a href="EmployeeManagementServlet">戻る</a>
+<a href="./EmployeeManagementServlet">戻る</a>
 
 <%} %>
 </body>

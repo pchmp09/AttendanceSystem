@@ -19,14 +19,14 @@ if (employees == null) {
 	employees = new ArrayList<Employee>();
 	session.setAttribute("employees", employees);
 }
-int i = Integer.parseInt(request.getParameter("i"));
+int i = (Integer)session.getAttribute("i");
 session.setAttribute("i", i);
 
 if(attendanceSession.isSignOn() == false){
-	response.sendRedirect("LoginServlet");
+	response.sendRedirect("./LoginServlet");
 	return;
 }else if(attendanceSession.isManager() == false){
-	response.sendRedirect("ManagerMainServlet");
+	response.sendRedirect("./ManagerMainServlet");
 	return;
 }
 %>
@@ -41,11 +41,11 @@ if(attendanceSession.isSignOn() == false){
 
 <%=employees.get(i).getName() %> を本当に従業員一覧から削除しますか？<br>
 <br>
-<form action="EmployeeManagementServlet?mode=delete" method="post">
+<form action="./EmployeeManagementServlet?mode=delete" method="post">
 <input type="submit" value="する" />
 </form>
 
-<form action="EmployeeManagementServlet?mode=list" method="post">
+<form action="./EmployeeManagementServlet?mode=list" method="post">
 <input type="submit" value="削除せず戻る" />
 </form>
 

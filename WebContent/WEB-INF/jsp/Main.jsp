@@ -25,7 +25,7 @@
 <%@ include file="header.jsp"%>
 <main>
    <h1>トップページ</h1>
-    <form action="MainServlet?mode=test" metohd="post">
+    <form action="./MainServlet?mode=test" metohd="post">
     <input type="submit" value="テスト"/>
     </form>
 

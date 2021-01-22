@@ -21,10 +21,10 @@ if (employees == null) {
 }
 
 if(attendanceSession.isSignOn() == false){
-	response.sendRedirect("LoginServlet");
+	response.sendRedirect("./LoginServlet");
 	return;
 }else if(attendanceSession.isManager() == false){
-	response.sendRedirect("ManagerMainServlet");
+	response.sendRedirect("./ManagerMainServlet");
 	return;
 }
 %>
@@ -55,13 +55,13 @@ if(attendanceSession.isSignOn() == false){
 		<td><%=employees.get(i).getMail() %></td>
 		<td><%=employees.get(i).getAddress() %></td>
 		<td>
-			<form action="EmployeeUpdate.jsp" method="post" >
+			<form action="./EmployeeUpdateServlet" method="post" >
 			<input type="hidden" name="i" value="<%=i %>"/>
 			<input type="submit" value="編集" />
 			</form>
 		</td>
 		<td>
-			<form action="EmployeeDelete.jsp" method="post">
+			<form action="./EmployeeDeleteServlet" method="post">
 			<input type="hidden" name="i" value="<%=i %>"/>
 			<input type="submit" value="削除" />
 			</form>
@@ -70,7 +70,7 @@ if(attendanceSession.isSignOn() == false){
 <%}%>
 </table>
 <br>
-<form action="EmployeeEntry.jsp" method ="post">
+<form action="EmployeeEntryServlet" method ="post">
 <input type="submit" value="新規登録">
 </form>
 

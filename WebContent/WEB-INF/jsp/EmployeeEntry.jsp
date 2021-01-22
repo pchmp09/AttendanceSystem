@@ -12,10 +12,10 @@
 	}
 
 	if(attendanceSession.isSignOn() == false){
-		response.sendRedirect("LoginServlet");
+		response.sendRedirect("./LoginServlet");
 		return;
 	}else if(attendanceSession.isManager() == false){
-		response.sendRedirect("ManagerMainServlet");
+		response.sendRedirect("./ManagerMainServlet");
 		return;
 	}
 %>
@@ -26,7 +26,7 @@
 </head>
 <body>
 新規登録<br>
-<form action="EmployeeRegistrationProcessServlet" method="post">
+<form action="./EmployeeRegistrationProcessServlet" method="post">
 ID<input type="text" name="id" size="20" maxlength="18"/><br>
 名前<input type="text" name="name" size="20" maxlength="18"/><br>
 電話番号<input type="text" name="tell" size="20" maxlength="18"/><br>

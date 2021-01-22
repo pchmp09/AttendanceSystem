@@ -12,7 +12,7 @@
 	}
 
 	if(attendanceSession.isSignOn() == false){
-		response.sendRedirect("LoginServlet");
+		response.sendRedirect("./LoginServlet");
 		return;
 	}
 
@@ -32,8 +32,8 @@
 	if(!(attendanceSession.isManager())){
 		out.print("管理者権限がないと開けません");
 	}else{%>
-	<a href="EmployeeManagementServlet?mode=list">従業員管理</a><br>
-	<a href="AttendanceManagementServlet">勤怠管理</a><br>
+	<a href="./EmployeeManagementServlet?mode=list">従業員管理</a><br>
+	<a href="./AttendanceManagementServlet">勤怠管理</a><br>
 	<%}%>
 </main>
 

@@ -13,7 +13,7 @@ if (attendanceSession == null) {
 }
 
 if(attendanceSession.isSignOn() == false){
-	response.sendRedirect("LoginServlet");
+	response.sendRedirect("./LoginServlet");
 	return;
 }
 
