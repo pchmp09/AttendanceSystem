@@ -13,19 +13,19 @@ import javax.servlet.http.HttpSession;
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
-	
+
 	public LoginServlet() {
 
 	}
 
-	
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultPage = "Login.jsp";
+		String resultPage = "WEB-INF/jsp/Login.jsp";
 
 
-	
+
 		HttpSession session = request.getSession();
-		AttendanceSession attendanceSession = 
+		AttendanceSession attendanceSession =
 				(AttendanceSession)session.getAttribute("attendanceSession");
 
 		if(attendanceSession == null) {

@@ -24,7 +24,7 @@ public class SignUpServlet extends HttpServlet{
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String resultPage = "/ErrorPage.jsp";
+		String resultPage = "WEB-INF/jsp/SignUp.jsp";
 
 		HttpSession session = request.getSession();
 		AttendanceSession attendanceSession = (AttendanceSession) session.getAttribute("attendanceSession");
@@ -51,14 +51,14 @@ public class SignUpServlet extends HttpServlet{
 				attendanceSession.setSignOff();
 			}
 
-			resultPage = "SignUp.jsp";
+			resultPage = "WEB-INF/jsp/SignUp.jsp";
 
 		} catch (ProcessErrorException e) {
 			request.setAttribute("exception", e);
-            resultPage = "/ErrorPage.jsp";
+            resultPage = "WEB-INF/jsp/SignUp.jsp";
 		} catch (Exception e) {
 			request.setAttribute("exception", e);
-            resultPage = "/ErrorPage.jsp";
+            resultPage = "WEB-INF/jsp/SignUp.jsp";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(resultPage);

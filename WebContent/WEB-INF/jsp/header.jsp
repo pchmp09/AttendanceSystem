@@ -11,11 +11,11 @@
             <%if(attendanceSession.isSignOn()){
             	out.print("ログイン中：" + attendanceSession.getId());
           	%>
-          	<form action="MainServlet" method="post">
+          	<form action="./MainServlet" method="post">
           		<input type="submit" name="logout" value="ログアウト">
           	</form>
             <%}else{ %>
-            	<form action="SignUpServlet" method="post">
+            	<form action="./SignUpServlet" method="post">
 					id入力<input type="text" name="id" value="00000000" size=8 maxlength="8" />
 					<input type="submit"  value="ログイン" />
 				</form>
@@ -25,9 +25,9 @@
             	<table>
             		<tr>
             				<td>
-            					<a href="StampingServlet?stamp=arrival_time">出勤</a><br>
+            					<a href="./StampingServlet?stamp=arrival_time">出勤</a><br>
             					<br>
-            					<a href="StampingServlet?stamp=leaving_time">退勤</a><br>
+            					<a href="./StampingServlet?stamp=leaving_time">退勤</a><br>
             				<td>
             		</tr>
             	</table>
@@ -36,16 +36,16 @@
             	<table>
             		<tr>
             				<td>
-            					<a href="StampingServlet?stamp=start_break">休憩開始</a><br>
+            					<a href="./StampingServlet?stamp=start_break">休憩開始</a><br>
             					<br>
-            					<a href="StampingServlet?stamp=end_break">休憩終了</a><br>
+            					<a href="./StampingServlet?stamp=end_break">休憩終了</a><br>
             				<td>
             		</tr>
             	</table>
             </li>
             <li>
             	<br>
-            	<a href="ManagerMainServlet">管理者用メニュー</a>
+            	<a href="./ManagerMainServlet">管理者用メニュー</a>
             </li>
         </ul>
     </nav>

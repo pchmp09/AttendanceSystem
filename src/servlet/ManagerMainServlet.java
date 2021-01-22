@@ -16,12 +16,12 @@ public class ManagerMainServlet extends HttpServlet {
 
     public ManagerMainServlet() {
         super();
-        
+
     }
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultPage = "ManagerMain.jsp";
+		String resultPage = "WEB-INF/jsp/ManagerMain.jsp";
 
 		HttpSession session = request.getSession();
 		AttendanceSession attendanceSession =

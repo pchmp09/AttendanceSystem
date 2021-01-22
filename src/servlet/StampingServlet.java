@@ -23,7 +23,7 @@ public class StampingServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultPage = "Stamping.jsp";
+		String resultPage = "WEB-INF/jsp/Stamping.jsp";
 
 		HttpSession session = request.getSession();
 		AttendanceSession attendanceSession =

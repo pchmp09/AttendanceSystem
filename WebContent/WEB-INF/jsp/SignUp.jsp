@@ -11,6 +11,9 @@
 		session.setAttribute("attendanceSession", attendanceSession);
 	}
 
+	request.setCharacterEncoding("UTF-8");
+	String e = (String)request.getAttribute("exception");
+
 %>
 <html>
 <head>
@@ -31,6 +34,7 @@
 } else{
 %>
 ログイン失敗
+<%System.out.print(e);%>
 <a href="MainServlet">topへ</a>
 <%
 }

@@ -33,7 +33,7 @@ public class AttendanceManagementServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String resultPage = "AttendanceManagement.jsp";
+		String resultPage = "WEB-INF/jsp/AttendanceManagement.jsp";
 
 		HttpSession session = request.getSession();
 		AttendanceSession attendanceSession = (AttendanceSession) session.getAttribute("attendanceSession");
@@ -60,7 +60,7 @@ public class AttendanceManagementServlet extends HttpServlet {
 			attendanceTable = new AttendanceTable();
 			session.setAttribute("attendanceSession", attendanceSession);
 		}
-		
+
 		request.setCharacterEncoding("UTF-8");
 
 		String mode = (String) request.getParameter("mode");

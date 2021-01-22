@@ -23,7 +23,7 @@ public class EmployeeRegistrationProcessServlet extends HttpServlet {
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultPage = "/EmployeeRegistrationProcess.jsp";
+		String resultPage = "WEB-INF/jsp//EmployeeRegistrationProcess.jsp";
 
 		HttpSession session = request.getSession();
 		AttendanceSession attendanceSession =
@@ -60,11 +60,11 @@ public class EmployeeRegistrationProcessServlet extends HttpServlet {
 
 			request.setAttribute("employee", employee);
 			request.setAttribute("add_success", add_success);
-			resultPage = "/EmployeeRegistrationProcess.jsp";
+			resultPage = "WEB-INF/jsp/EmployeeRegistrationProcess.jsp";
 
 		 } catch (Exception e) {
 	            request.setAttribute("exception", e);
-	            resultPage = "/ErrorPage.jsp";
+	            resultPage = "WEB-INF/jsp/ErrorPage.jsp";
 	        }
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(resultPage);

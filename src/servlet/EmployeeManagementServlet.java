@@ -28,7 +28,7 @@ public class EmployeeManagementServlet extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String resultPage = "EmployeeManagement.jsp";
+		String resultPage = "WEB-INF/jsp/EmployeeManagement.jsp";
 
 		HttpSession session = request.getSession();
 		AttendanceSession attendanceSession =
@@ -44,7 +44,7 @@ public class EmployeeManagementServlet extends HttpServlet {
 			employees = new ArrayList<Employee>();
 			session.setAttribute("employees", employees);
 		}
-		
+
 		request.setCharacterEncoding("UTF-8");
 
 		String mode = (String)request.getParameter("mode");
