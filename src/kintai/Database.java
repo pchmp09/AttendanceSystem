@@ -15,7 +15,7 @@ public class Database implements AutoCloseable{
 
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		con = DriverManager.getConnection(
-				"jdbc:mysql://us-cdbr-east-03.cleardb.com/heroku_33b15a10d15b2e9?characterEncoding=UTF-8&serverTimezone=JST" ,
+				"jdbc:mysql://us-cdbr-east-03.cleardb.com/heroku_33b15a10d15b2e9?characterEncoding=UTF-8&serverTimezone=JST&zeroDateTimeBehavior=convertToNull" ,
 				"b25b85cdf3eb64","6ce92d7e");
 	}
 
