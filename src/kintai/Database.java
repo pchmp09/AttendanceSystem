@@ -13,8 +13,8 @@ public class Database implements AutoCloseable{
 		super();
 		Class.forName("com.mysql.cj.jdbc.Driver");
 		con = DriverManager.getConnection(
-				"jdbc:mysql://localhost/attendance_db?characterEncoding=UTF-8&serverTimezone=JST" ,
-				"root","Mysql@2019");
+				"jdbc:mysql://localhost/heroku_33b15a10d15b2e9?characterEncoding=UTF-8&serverTimezone=JST" ,
+				"b25b85cdf3eb64","6ce92d7e");
 	}
 
 	public EmployeeDAO getEmployeeDAO() {
