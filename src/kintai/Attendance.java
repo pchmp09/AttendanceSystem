@@ -102,12 +102,14 @@ public class Attendance {
 		this.endBreak = this.endBreak.with(endBreak);
 	}
 
+	//LocalDateTime型のデータを「時分」のString型に変換する処理
 	public String eachTimeToString(LocalDateTime ldt) {
 		if(ldt == null)
 			return null;
 		return ldt.format(DateTimeFormatter.ofPattern("HH:mm"));
 	}
 	
+	//LocalDateTime型のデータを「年月日 時分秒」のString型に変換する処理
 	public String eachDateTimeToString(LocalDateTime ldt) {
 		if(ldt == null)
 			return null;
@@ -126,32 +128,40 @@ public class Attendance {
 		return midnightWorkTime;
 	}
 	
+	//Duration型のデータをString型に変換する処理
 	public String eachDurationToString(Duration duration) {
 		return DateTimeFormatter.ofPattern("HH時間mm分").format(LocalTime.MIDNIGHT.plus(duration));
 	}
 
+	//休憩時間を計算する処理
 	public void calcBreakTime() {
+		//休憩開始、終了のどちらも登録されていたら計算する
 		if (startBreak != null && endBreak != null) {
 			breakTime = Duration.between(startBreak, endBreak);
 		}
 	}
 
+	//勤務時間を計算する処理
 	public void calcWorkTime() {
+		//出勤、退勤のどちらも登録されていたら計算する
 		if (arrive != null && leave != null) {
 			workTime = Duration.between(arrive, leave);
+			//休憩時間が存在するなら、勤務時間からその分を引く
 			if (breakTime != null) {
 				workTime = workTime.minus(breakTime);
 			}
 		}
 	}
 
+	//深夜時間を計算する処理
 	public void calcMidnightWorkTime() {
 		if (arrive != null && leave != null && breakTime != null) {
 
+			//勤務時間の計算
 			if(workTime == null)
 				calcWorkTime();
 
-
+			//勤務時間に23時から翌5時まで勤務している時間帯があったら、勤務時間からその分を引く
 			LocalDateTime startMidnight = arrive.with(LocalTime.of(23, 0));
 			midnightWorkTime = workTime.minus(Duration.between(arrive, startMidnight));
 
