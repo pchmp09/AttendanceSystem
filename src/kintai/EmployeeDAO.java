@@ -15,6 +15,7 @@ public class EmployeeDAO {
 		this.con = database.getCon();
 	}
 
+	//引数として与えられたIDがデータベースに格納されているか確認する処理
 	public boolean employeeCertify(String id) throws SQLException {
 		if(id == null )
 			return false;
@@ -35,6 +36,7 @@ public class EmployeeDAO {
 		return result;
 	}
 
+	//引数として与えられたIDに管理者権限が付与されているか確認する処理
 	public boolean isManeger(String id) throws SQLException {
 		String sql = "select manager from employee where emp_id = ?";
 		PreparedStatement stmt = con.prepareStatement(sql);
@@ -85,6 +87,7 @@ public class EmployeeDAO {
 		return result;
 	}
 
+	//従業員を新規登録する処理
 	public boolean addEmployee(Employee emp) throws SQLException {
 		if(emp.getEmpId() == null)
 			return false;
@@ -117,6 +120,7 @@ public class EmployeeDAO {
 	        }
 	    }
 
+	//従業員情報を削除する処理
 	 public int deleteEmployee(String id) throws SQLException {
 	        String sql = "delete from employee where emp_id = ?";
 	        PreparedStatement stmt = con.prepareStatement(sql);
@@ -126,6 +130,7 @@ public class EmployeeDAO {
 	        return i1;
 	    }
 
+	//従業員情報を修正する処理
 	 public int updateEmployee(Employee emp,String id) throws SQLException {
 		 String sql = "update employee set emp_id = ?, nama = ?, tell = ?,"
 		 		+ " mail = ?, address = ?, manager = ? where emp_id = ?";
