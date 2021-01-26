@@ -21,8 +21,9 @@ public class AttendanceDAO {
 	}
 
 	private List<Attendance> queryAndMakeList(PreparedStatement stmt) throws SQLException {
-		ResultSet rs = stmt.executeQuery();
-		List<Attendance> list = new ArrayList<>();
+		ResultSet rs 		= stmt.executeQuery();
+		List<Attendance> list 	= new ArrayList<>();
+		
 		while (rs.next()) {
 			Attendance result = makeInstanceFromRow(rs);
 			list.add(result);
@@ -67,14 +68,17 @@ public class AttendanceDAO {
 		return result;
 	}
 
+	//LocalDate型をString型に変換する処理
 	private String dateToString(Date date) {
 		return date.toLocalDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	}
 
+	//LocalDateTime型をString型に変換する処理
 	private String timestampToString(Timestamp ts) {
 		return ts.toLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 	}
 
+	//出勤日と出勤時刻をデータベースに格納する処理
 	public boolean setArrival(AttendanceSession session) throws SQLException {
 		if (session.getId() == null)
 			return false;
@@ -108,14 +112,17 @@ public class AttendanceDAO {
 		}
 	}
 
+	//退勤時刻、休憩時刻をデータベースに格納する処理
 	public int setTime(AttendanceSession attendanceSession, String stamp) throws SQLException {
 		if (attendanceSession.getId() == null)
 			return 0;
 
+		//勤怠管理テーブル内に格納された直近のフィールドにアップデートする
 		String sql = "update attendance set " + stamp + "= ? where emp_id = ? order by work_date desc limit 1";
 
-		LocalDateTime nowDateTime = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+		//現在時刻を取得しフォーマットする
+		LocalDateTime nowDateTime 	= LocalDateTime.now();
+		DateTimeFormatter formatter 	= DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 		String now = nowDateTime.format(formatter);
 
 		PreparedStatement stmt = con.prepareStatement(sql);
@@ -129,6 +136,7 @@ public class AttendanceDAO {
 
 	}
 
+	//勤怠管理テーブル内に格納された直近のフィールドを取得する処理
 	public Attendance getMostRecentAttendance(String id) throws SQLException {
 		Attendance result = null;
 		String sql = "select * from attendance where emp_id = ? order by work_date desc limit 1";
@@ -158,6 +166,7 @@ public class AttendanceDAO {
 
 	}
 
+	//月ごとの勤怠実績を取得する処理
 	public List<Attendance> getAttendanceOfMonth(String id, String year, String month) throws SQLException{
 		String sql = "select * from attendance where emp_id = ? && work_date like ?";
 
@@ -172,15 +181,18 @@ public class AttendanceDAO {
 
 	}
 
-	public int deleteAttendance(int attendanceId) throws SQLException {
-        String sql = "delete from attendance where attendance_id = ?";
-        PreparedStatement stmt = con.prepareStatement(sql);
-        stmt.setInt(1,attendanceId);
-        int i1 = stmt.executeUpdate();
-        stmt.close();
-        return i1;
-    }
 
+	//勤怠実績を削除する処理
+	public int deleteAttendance(int attendanceId) throws SQLException {
+		String sql = "delete from attendance where attendance_id = ?";
+		PreparedStatement stmt = con.prepareStatement(sql);
+		stmt.setInt(1,attendanceId);
+		int i1 = stmt.executeUpdate();
+		stmt.close();
+       	 	return i1;
+    	}
+
+	//勤怠実績を修正する処理
 	public int updateAttendance(Attendance attendance) throws SQLException {
 	 String sql = "update attendance set work_date = ?, arrival_time = ?, leaving_time = ?,"
 	 		+ " start_break = ?, end_break = ? where attendance_Id = ?" ;
