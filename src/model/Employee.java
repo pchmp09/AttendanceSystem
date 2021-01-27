@@ -1,5 +1,6 @@
-package kintai;
+package model;
 
+//従業員情報を格納するクラス
 public class Employee {
 	private String empId;
 	private String name;
