@@ -1,5 +1,5 @@
-<%@page import="kintai.Attendance"%>
-<%@page import="servlet.AttendanceSession"%>
+<%@page import="model.Attendance"%>
+<%@page import="model.AttendanceSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -38,15 +38,15 @@ int i1 = (Integer)session.getAttribute("i1");
 <body>
 <%@ include file="header.jsp"%>
 
-<table>
-	<tr>
-		<th>日付</th>
-		<th>出勤</th>
-		<th>退勤</th>
-		<th>休憩開始</th>
-		<th>休憩終了</th>
+<table border="1">
+	<tr align="center">
+		<th>日　　付</th>
+		<th> 出　　勤 </th>
+		<th> 退　　勤 </th>
+		<th> 休憩開始 </th>
+		<th> 休憩終了 </th>
 	</tr>
-	<tr>
+	<tr align="center">
 		<td><%out.print(attendance.getWorkDate() 	== null ? "---" : attendance.getWorkDateToString());%></td>
 		<td><%out.print(attendance.getArrive() 			== null ? "---" : attendance.eachTimeToString(attendance.getArrive()));%></td>
 		<td><%out.print(attendance.getLeave() 			== null ? "---" : attendance.eachTimeToString(attendance.getLeave()));%></td>

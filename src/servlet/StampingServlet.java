@@ -10,10 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kintai.Attendance;
-import kintai.AttendanceDAO;
-import kintai.Database;
+import model.Attendance;
+import model.AttendanceDAO;
+import model.AttendanceSession;
+import model.Database;
 
+//打刻処理を行い、結果を送るクラス
 @WebServlet("/StampingServlet")
 public class StampingServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -25,39 +27,45 @@ public class StampingServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String resultPage = "WEB-INF/jsp/Stamping.jsp";
 
+		//sessionオブジェクトを取得する
 		HttpSession session = request.getSession();
-		AttendanceSession attendanceSession =
-				(AttendanceSession) session.getAttribute("attendanceSession");
 
+		//ログインに関わる情報を取得、無ければインスタンスを作成してsessionオブジェクトに設定する
+		AttendanceSession attendanceSession = (AttendanceSession) session.getAttribute("attendanceSession");
 		if (attendanceSession == null) {
 			attendanceSession = new AttendanceSession();
 			session.setAttribute("attendanceSession", attendanceSession);
 		}
 
+		//attendanceオブジェクトを取得し、sessionオブジェクトに設定する
 		Attendance attendance = (Attendance) session.getAttribute("attendance");
 		if(attendance == null){
 			attendance = new Attendance();
 			session.setAttribute("attendance", attendance);
 		}
 
+		//打刻する分類のパラメータを取得する
 		request.setCharacterEncoding("UTF-8");
 		String stamp = request.getParameter("stamp");
 
 		boolean success = false;
-		int i1 = 0;
+
 
 		try(Database database = new Database();){
 			AttendanceDAO attendanceDAO = database.getAttendanceDAO();
 
+			//パラメータがarrival_timeのとき、出勤日と出勤時刻をデータベースに新しく格納する
 			if(stamp.equals("arrival_time")) {
 				success = attendanceDAO.setArrival(attendanceSession);
-				attendance = attendanceDAO.getMostRecentAttendance(attendanceSession.getId());
-				session.setAttribute("attendance", attendance);
+
+				//パラメータがarrival_time以外のとき、対応する分類の時刻をデータベースに格納する
 			}else {
-				i1 = attendanceDAO.setTime(attendanceSession, stamp);
-				attendance = attendanceDAO.getMostRecentAttendance(attendanceSession.getId());
-				session.setAttribute("attendance", attendance);
+				int i1 = attendanceDAO.setTime(attendanceSession, stamp);
 			}
+
+			//打刻した勤怠情報を取得し、sessionオブジェクトに設定する
+			attendance = attendanceDAO.getMostRecentAttendance(attendanceSession.getId());
+			session.setAttribute("attendance", attendance);
 
 		} catch (Exception e) {
 			System.out.println(e);
@@ -65,7 +73,6 @@ public class StampingServlet extends HttpServlet {
 
 
 		session.setAttribute("success", success);
-		session.setAttribute("i1", i1);
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(resultPage);
         dispatcher.forward(request, response);
