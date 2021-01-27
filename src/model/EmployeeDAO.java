@@ -1,4 +1,4 @@
-package kintai;
+package model;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,14 +7,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-
+//従業員データベースと繋ぐDAOクラス
 public class EmployeeDAO {
 	private Connection con;
+
 
 	public EmployeeDAO(Database database) {
 		this.con = database.getCon();
 	}
 
+	//引数として与えられたIDがデータベースに格納されているか確認する処理
 	public boolean employeeCertify(String id) throws SQLException {
 		if(id == null )
 			return false;
@@ -35,6 +37,7 @@ public class EmployeeDAO {
 		return result;
 	}
 
+	//引数として与えられたIDに管理者権限が付与されているか確認する処理
 	public boolean isManeger(String id) throws SQLException {
 		String sql = "select manager from employee where emp_id = ?";
 		PreparedStatement stmt = con.prepareStatement(sql);
@@ -53,6 +56,7 @@ public class EmployeeDAO {
 		return result;
 	}
 
+	//データベースの全従業員情報を取得しリスト化する処理
 	public List<Employee> getAllEmployee() throws SQLException{
 		String sql = "select emp_id,nama,tell,mail,address from employee";
 
@@ -64,6 +68,7 @@ public class EmployeeDAO {
 	}
 
 
+	//従業員情報をリスト化する処理
 	private List<Employee> queryAndMakeList(PreparedStatement stmt) throws SQLException{
 		ResultSet rs = stmt.executeQuery();
 		List<Employee> list = new ArrayList<>();
@@ -75,6 +80,7 @@ public class EmployeeDAO {
 		return list;
 	}
 
+	//データベースから従業員情報を取得する処理
 	private Employee makeInstanceFromRow(ResultSet rs) throws SQLException {
 		Employee result = new Employee();
 		result.setEmpId(rs.getString("emp_id"));
@@ -85,6 +91,7 @@ public class EmployeeDAO {
 		return result;
 	}
 
+	//従業員を新規登録する処理
 	public boolean addEmployee(Employee emp) throws SQLException {
 		if(emp.getEmpId() == null)
 			return false;
@@ -117,6 +124,7 @@ public class EmployeeDAO {
 	        }
 	    }
 
+	//従業員情報を削除する処理
 	 public int deleteEmployee(String id) throws SQLException {
 	        String sql = "delete from employee where emp_id = ?";
 	        PreparedStatement stmt = con.prepareStatement(sql);
@@ -126,6 +134,7 @@ public class EmployeeDAO {
 	        return i1;
 	    }
 
+	//従業員情報を修正する処理
 	 public int updateEmployee(Employee emp,String id) throws SQLException {
 		 String sql = "update employee set emp_id = ?, nama = ?, tell = ?,"
 		 		+ " mail = ?, address = ?, manager = ? where emp_id = ?";

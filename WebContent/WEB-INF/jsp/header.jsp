@@ -1,4 +1,4 @@
-<%@page import="servlet.AttendanceSession"%>
+<%@page import="model.AttendanceSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -15,8 +15,8 @@
           		<input type="submit" name="logout" value="ログアウト">
           	</form>
             <%}else{ %>
-            	<form action="./SignUpServlet" method="post">
-					id入力<input type="text" name="id" value="00000000" size=8 maxlength="8" />
+            	<form action="./LoginCheckServlet" method="post">
+					id入力<input type="text" name="id" size=8 maxlength="8" />
 					<input type="submit"  value="ログイン" />
 				</form>
 				<%} %>

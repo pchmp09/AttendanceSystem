@@ -5,13 +5,13 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <title>TestApp</title>
+    <title>ログイン　｜　勤怠管理システム</title>
 </head>
 <body>
 
     <div>
-        <h1>ようこそ ゲスト さん</h1>
-        <a href="./MainServlet">ログインページへ＞＞</a>
+        <h1>ログインページ</h1>
+        <a href="./MainServlet">メインページへ＞＞</a>
     </div>
 </body>
 </html>

@@ -1,6 +1,6 @@
 <%@page import="java.awt.print.Printable"%>
-<%@page import="kintai.EmployeeDAO"%>
-<%@page import="servlet.AttendanceSession"%>
+<%@page import="model.EmployeeDAO"%>
+<%@page import="model.AttendanceSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -21,7 +21,7 @@
 </head>
 <body>
 <div>
-	<form action="./SignUpServlet" method="post">
+	<form action="./LoginCheckServlet" method="post">
 		id入力<input type="text" name="id" value="00000000" size=20 maxlength="18" />
 		<input type="submit" name="Logout" value="ログイン" />
 	</form>

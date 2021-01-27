@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.AttendanceSession;
+
 
 @WebServlet("/EmployeeEntryServlet")
 public class EmployeeEntryServlet extends HttpServlet{

@@ -1,4 +1,4 @@
-<%@page import="servlet.AttendanceSession"%>
+<%@page import="model.AttendanceSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -25,12 +25,6 @@
 <%@ include file="header.jsp"%>
 <main>
    <h1>トップページ</h1>
-    <form action="./MainServlet?mode=test" metohd="post">
-    <input type="submit" value="テスト"/>
-    </form>
-
-
-
 </main>
 
 </body>

@@ -1,7 +1,7 @@
 <%@page import="java.util.ArrayList"%>
-<%@page import="kintai.Employee"%>
+<%@page import="model.Employee"%>
 <%@page import="java.util.List"%>
-<%@page import="servlet.AttendanceSession"%>
+<%@page import="model.AttendanceSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -41,25 +41,12 @@ if(attendanceSession.isSignOn() == false){
 <%@ include file="header.jsp"%>
 
 <form action="./EmployeeManagementServlet?mode=update" method="post">
-<table>
-	<tr>
-		<th>ID</th>
-		<th>名前</th>
-		<th>電話番号</th>
-		<th>メール</th>
-		<th>住所</th>
-		<th>管理者</th>
-	</tr>
-	<tr>
-		<th><input type="text" name="empId" size="20" maxlength="18" value="<%=employees.get(i).getEmpId() %>"/></th>
-		<th><input type="text" name="name" size="20" maxlength="18" value="<%=employees.get(i).getName() %>"/></th>
-		<th><input type="text" name="tell" size="20" maxlength="18" value="<%=employees.get(i).getTell() %>"/></th>
-		<th><input type="text" name="mail" size="20" maxlength="18" value="<%=employees.get(i).getMail() %>"/></th>
-		<th><input type="text" name="address" size="20" maxlength="100" value="<%=employees.get(i).getAddress() %>"/></th>
-		<th><input type="radio" name ="manager" value="true"></th>
-	</tr>
-
-</table>
+　 I　　　  D　<input type="text" name="id" size="20" maxlength="18" value="<%=employees.get(i).getEmpId() %>"/><br>
+　名　　　前　<input type="text" name="name" size="20" maxlength="18" value="<%=employees.get(i).getName() %>"/><br>
+電　話　番　号<input type="text" name="tell" size="20" maxlength="18" value="<%=employees.get(i).getTell() %>"/><br>
+メールアドレス<input type="text" name="mail" size="20" maxlength="18" value="<%=employees.get(i).getMail() %>"/><br>
+　住　　　所　<input type="text" name="address" size="20" maxlength="100" value="<%=employees.get(i).getAddress() %>"/><br>
+管理者として登録する<input type="checkbox" name ="manager" value="true"><br>
 <br>
 <input type="submit" value="完了">
 </form>

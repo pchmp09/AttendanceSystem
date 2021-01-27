@@ -10,55 +10,58 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kintai.Database;
-import kintai.EmployeeDAO;
-import kintai.ProcessErrorException;
+import model.AttendanceSession;
+import model.Database;
+import model.EmployeeDAO;
+import model.ProcessErrorException;
 
-@WebServlet("/SignUpServlet")
-public class SignUpServlet extends HttpServlet{
+//ログインの可否を判定し、結果を送るクラス
+@WebServlet("/LoginCheckServlet")
+public class LoginCheckServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
-	public SignUpServlet() {
+	public LoginCheckServlet() {
 
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String resultPage = "WEB-INF/jsp/SignUp.jsp";
+		String resultPage = "WEB-INF/jsp/LoginCheck.jsp";
 
+		//sessionオブジェクトを取得
 		HttpSession session = request.getSession();
-		AttendanceSession attendanceSession = (AttendanceSession) session.getAttribute("attendanceSession");
 
+		//ログインに関わる情報を取得、無ければインスタンスを作成してsessionオブジェクトに設定する
+		AttendanceSession attendanceSession = (AttendanceSession) session.getAttribute("attendanceSession");
 		if (attendanceSession == null) {
 			attendanceSession = new AttendanceSession();
-
 			session.setAttribute("attendanceSession", attendanceSession);
 		}
 
+		//ログイン判別対象のIDを取得する
 		request.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 
-		boolean signOn = false;
-
+		//データベース接続
 		try (Database database = new Database();) {
 			EmployeeDAO employeeDAO = database.getEmployeeDAO();
 
+			boolean signOn = false;		//ログイン判定用の変数
+
+			//データベースに引数で与えたIDと同一のものがあればtrue
 			signOn = employeeDAO.employeeCertify(id);
 
 			if (signOn) {
+				//IDと管理者権限の有無をsessionオブジェクトに設定し、ログイン状態を保持する
 				attendanceSession.setSignOn(id,employeeDAO.isManeger(id));
 			} else {
 				attendanceSession.setSignOff();
 			}
 
-			resultPage = "WEB-INF/jsp/SignUp.jsp";
-
 		} catch (ProcessErrorException e) {
 			request.setAttribute("exception", e);
-            resultPage = "WEB-INF/jsp/SignUp.jsp";
 		} catch (Exception e) {
 			request.setAttribute("exception", e);
-            resultPage = "WEB-INF/jsp/SignUp.jsp";
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(resultPage);
