@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.AttendanceSession;
-import model.Database;
-import model.EmployeeDAO;
-import model.ProcessErrorException;
+import kintai.AttendanceSession;
+import kintai.Database;
+import kintai.EmployeeDAO;
+import kintai.ProcessErrorException;
 
 //ログインの可否を判定し、結果を送るクラス
 @WebServlet("/LoginCheckServlet")

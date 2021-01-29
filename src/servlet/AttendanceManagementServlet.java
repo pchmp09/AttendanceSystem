@@ -15,13 +15,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.Attendance;
-import model.AttendanceDAO;
-import model.AttendanceSession;
-import model.AttendanceTable;
-import model.Database;
-import model.Employee;
-import model.EmployeeDAO;
+import kintai.Attendance;
+import kintai.AttendanceDAO;
+import kintai.AttendanceSession;
+import kintai.AttendanceTable;
+import kintai.Database;
+import kintai.Employee;
+import kintai.EmployeeDAO;
 
 
 //データベースから勤怠情報を取得して画面に送るクラス

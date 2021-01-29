@@ -1,6 +1,6 @@
 <%@page import="java.awt.print.Printable"%>
-<%@page import="model.EmployeeDAO"%>
-<%@page import="model.AttendanceSession"%>
+<%@page import="kintai.EmployeeDAO"%>
+<%@page import="kintai.AttendanceSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>

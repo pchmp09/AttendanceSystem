@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import model.AttendanceSession;
-import model.Database;
-import model.Employee;
-import model.EmployeeDAO;
+import kintai.AttendanceSession;
+import kintai.Database;
+import kintai.Employee;
+import kintai.EmployeeDAO;
 
 @WebServlet("/EmployeeRegistrationProcessServlet")
 public class EmployeeRegistrationProcessServlet extends HttpServlet {

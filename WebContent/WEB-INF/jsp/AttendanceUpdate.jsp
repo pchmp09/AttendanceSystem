@@ -1,7 +1,7 @@
-<%@page import="model.AttendanceTable"%>
-<%@page import="model.Attendance"%>
+<%@page import="kintai.AttendanceTable"%>
+<%@page import="kintai.Attendance"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="model.Employee"%>
+<%@page import="kintai.Employee"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
