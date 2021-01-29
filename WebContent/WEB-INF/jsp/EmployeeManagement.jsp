@@ -6,8 +6,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%
-AttendanceSession attendanceSession =
-(AttendanceSession) session.getAttribute("attendanceSession");
+AttendanceSession attendanceSession = (AttendanceSession) session.getAttribute("attendanceSession");
 
 if (attendanceSession == null) {
 attendanceSession = new AttendanceSession();
