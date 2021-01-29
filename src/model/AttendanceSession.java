@@ -1,4 +1,4 @@
-package kintai;
+package model;
 
 //ログインに関わる情報を格納するクラス
 public class AttendanceSession {

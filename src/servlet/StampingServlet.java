@@ -10,10 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kintai.Attendance;
-import kintai.AttendanceDAO;
-import kintai.AttendanceSession;
-import kintai.Database;
+import model.Attendance;
+import model.AttendanceDAO;
+import model.AttendanceSession;
+import model.Database;
 
 //打刻処理を行い、結果を送るクラス
 @WebServlet("/StampingServlet")

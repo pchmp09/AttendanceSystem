@@ -1,4 +1,4 @@
-package kintai;
+package model;
 
 import java.time.Duration;
 import java.time.LocalDate;

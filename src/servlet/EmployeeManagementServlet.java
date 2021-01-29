@@ -13,10 +13,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import kintai.AttendanceSession;
-import kintai.Database;
-import kintai.Employee;
-import kintai.EmployeeDAO;
+import model.AttendanceSession;
+import model.Database;
+import model.Employee;
+import model.EmployeeDAO;
 
 //データベースから従業員情報を取得して画面に送るクラス
 @WebServlet("/EmployeeManagementServlet")

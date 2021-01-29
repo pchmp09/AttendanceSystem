@@ -1,4 +1,4 @@
-package kintai;
+package model;
 
 public class AttendanceTable {
 	private int empNum;
