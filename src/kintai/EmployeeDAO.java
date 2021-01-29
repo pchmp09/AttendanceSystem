@@ -140,7 +140,6 @@ public class EmployeeDAO {
 		 		+ " mail = ?, address = ?, manager = ? where emp_id = ?";
 
 		 PreparedStatement stmt = con.prepareStatement(sql);
-
 		 stmt.setString(1, emp.getEmpId());
 		 stmt.setString(2, emp.getName());
 		 stmt.setString(3, emp.getTell());
