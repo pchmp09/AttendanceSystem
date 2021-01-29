@@ -70,12 +70,14 @@ public class AttendanceDAO {
 		return result;
 	}
 
-	//Date型をString型に変換する処理
+
+	//LocalDate型をString型に変換する処理
 	private String dateToString(Date date) {
 		return date.toLocalDate().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 	}
 
-	//TimestampをLocalDateTime型に合わせたString型に変換する処理
+
+	//LocalDateTime型をString型に変換する処理
 	private String timestampToString(Timestamp ts) {
 		return ts.toLocalDateTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 	}
@@ -119,6 +121,7 @@ public class AttendanceDAO {
 		if (attendanceSession.getId() == null)
 			return 0;
 
+
 		//勤怠管理テーブル内に格納された直近のレコードにアップデートする
 		String sql = "update attendance set " + stamp + "= ? where emp_id = ? order by work_date desc limit 1";
 
@@ -137,6 +140,7 @@ public class AttendanceDAO {
 		return i1;
 
 	}
+
 
 	//勤怠管理テーブル内に格納された直近のレコードを取得する処理
 	public Attendance getMostRecentAttendance(String id) throws SQLException {
