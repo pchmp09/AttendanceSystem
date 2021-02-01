@@ -24,7 +24,7 @@
 <div>
 	<form action="./LoginCheckServlet" method="post">
 		id入力<input type="text" name="id" size=20 maxlength="18" />
-		<input type="submit" name="Logout" value="ログイン" />
+		<input type="submit" name="Logout" value="ログイン" autocomplete="off"/>
 	</form>
 <br>
 <br>

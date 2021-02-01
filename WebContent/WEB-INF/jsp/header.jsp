@@ -12,7 +12,7 @@
             	out.print("ログイン中：" + attendanceSession.getId());
           	%>
           	<form action="./MainServlet" method="post">
-          		<input type="submit" name="logout" value="ログアウト">
+          		<input type="submit" name="logout" value="ログアウト" autocomplete="off">
           	</form>
             <%}else{ %>
             	<form action="./LoginCheckServlet" method="post">
