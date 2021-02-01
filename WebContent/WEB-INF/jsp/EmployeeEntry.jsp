@@ -25,7 +25,7 @@
 <title>新規登録</title>
 </head>
 <body>
-新規登録<br>
+<h1>新規登録</h1>
 <form action="./EmployeeRegistrationProcessServlet" method="post">
 　 I　　　  D　<input type="text" name="id" size="20" maxlength="18"/><br>
 　名　　　前　<input type="text" name="name" size="20" maxlength="18"/><br>
