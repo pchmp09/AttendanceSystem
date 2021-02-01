@@ -20,6 +20,7 @@
 <title>ログイン</title>
 </head>
 <body>
+<h1>ログインページ</h1>
 <div>
 	<form action="./LoginCheckServlet" method="post">
 		id入力<input type="text" name="id" size=20 maxlength="18" />
@@ -27,7 +28,7 @@
 	</form>
 <br>
 <br>
-<a href="./MainServlet">メインページに戻る</a>
+<a href="./MainServlet">トップページに戻る</a>
 
 </div>
 </body>
