@@ -31,7 +31,7 @@ public class LoginCheckServlet extends HttpServlet{
 		//sessionオブジェクトを取得
 		HttpSession session = request.getSession();
 
-		//ログインに関わる情報を取得、無ければインスタンスを作成してsessionオブジェクトに設定する
+		//ログインに関わる情報を取得、無ければインスタンスを作成してsessionオブジェクトに格納する
 		AttendanceSession attendanceSession = (AttendanceSession) session.getAttribute("attendanceSession");
 		if (attendanceSession == null) {
 			attendanceSession = new AttendanceSession();
@@ -52,7 +52,7 @@ public class LoginCheckServlet extends HttpServlet{
 			signOn = employeeDAO.employeeCertify(id);
 
 			if (signOn) {
-				//IDと管理者権限の有無をsessionオブジェクトに設定し、ログイン状態を保持する
+				//IDと管理者権限の有無をsessionオブジェクトに格納し、ログイン状態を保持する
 				attendanceSession.setSignOn(id,employeeDAO.isManeger(id));
 			} else {
 				attendanceSession.setSignOff();

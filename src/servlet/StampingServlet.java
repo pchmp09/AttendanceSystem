@@ -30,14 +30,14 @@ public class StampingServlet extends HttpServlet {
 		//sessionオブジェクトを取得する
 		HttpSession session = request.getSession();
 
-		//ログインに関わる情報を取得、無ければインスタンスを作成してsessionオブジェクトに設定する
+		//ログインに関わる情報を取得、無ければインスタンスを作成してsessionオブジェクトに格納する
 		AttendanceSession attendanceSession = (AttendanceSession) session.getAttribute("attendanceSession");
 		if (attendanceSession == null) {
 			attendanceSession = new AttendanceSession();
 			session.setAttribute("attendanceSession", attendanceSession);
 		}
 
-		//attendanceオブジェクトを取得し、sessionオブジェクトに設定する
+		//attendanceオブジェクトを取得し、sessionオブジェクトに格納する
 		Attendance attendance = (Attendance) session.getAttribute("attendance");
 		if(attendance == null){
 			attendance = new Attendance();
@@ -63,7 +63,7 @@ public class StampingServlet extends HttpServlet {
 				int i1 = attendanceDAO.setTime(attendanceSession, stamp);
 			}
 
-			//打刻した勤怠情報を取得し、sessionオブジェクトに設定する
+			//打刻した勤怠情報を取得し、sessionオブジェクトに格納する
 			attendance = attendanceDAO.getMostRecentAttendance(attendanceSession.getId());
 			session.setAttribute("attendance", attendance);
 

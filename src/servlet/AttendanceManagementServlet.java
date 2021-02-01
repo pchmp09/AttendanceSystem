@@ -41,7 +41,7 @@ public class AttendanceManagementServlet extends HttpServlet {
 		//sessionオブジェクトを取得する
 		HttpSession session = request.getSession();
 
-		//ログインに関わる情報を取得、無ければ作成してsessionオブジェクトに設定する
+		//ログインに関わる情報を取得、無ければ作成してsessionオブジェクトに格納する
 		AttendanceSession attendanceSession = (AttendanceSession) session.getAttribute("attendanceSession");
 		if (attendanceSession == null) {
 			attendanceSession = new AttendanceSession();
@@ -81,7 +81,7 @@ public class AttendanceManagementServlet extends HttpServlet {
 			//パラメータがNULLのとき、従業員指定のための処理のみをする
 			if (mode == null) {
 
-				//データベースから全従業員のデータを取得し、sessionオブジェクトに設定する
+				//データベースから全従業員のデータを取得し、sessionオブジェクトに格納する
 				EmployeeDAO employeeDAO = database.getEmployeeDAO();
 				employees = employeeDAO.getAllEmployee();
 				session.setAttribute("employees", employees);
@@ -92,7 +92,7 @@ public class AttendanceManagementServlet extends HttpServlet {
 				String year 		= (String) request.getParameter("year");		//指定年
 				String month 	= String.format("%02d", Integer.parseInt(request.getParameter("month")));	//指定月
 
-				//sessionオブジェクトに指定情報を設定する
+				//sessionオブジェクトに指定情報を格納する
 				attendanceTable.setEmpNum(empNum);
 				attendanceTable.setYear(year);
 				attendanceTable.setMonth(month);
@@ -178,7 +178,7 @@ public class AttendanceManagementServlet extends HttpServlet {
 
 			}
 
-		//sessionオブジェクトに勤怠実績リストを設定する
+		//sessionオブジェクトに勤怠実績リストを格納する
 		session.setAttribute("attendances", attendances);
 
 	}catch(ClassNotFoundException e){

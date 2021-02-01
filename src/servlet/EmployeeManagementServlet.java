@@ -35,14 +35,14 @@ public class EmployeeManagementServlet extends HttpServlet {
 		//sessionオブジェクトを取得する
 		HttpSession session = request.getSession();
 
-		//ログインに関わる情報を取得、無ければ作成してsessionオブジェクトに設定する
+		//ログインに関わる情報を取得、無ければ作成してsessionオブジェクトに格納する
 		AttendanceSession attendanceSession = (AttendanceSession) session.getAttribute("attendanceSession");
 		if (attendanceSession == null) {
 			attendanceSession = new AttendanceSession();
 			session.setAttribute("attendanceSession", attendanceSession);
 		}
 
-		//従業員リストを取得し、sessionオブジェクトに設定する
+		//従業員リストを取得し、sessionオブジェクトに格納する
 		List<Employee> employees = (List<Employee>)session.getAttribute("employees");
 		if (employees == null) {
 			employees = new ArrayList<Employee>();
@@ -84,7 +84,7 @@ public class EmployeeManagementServlet extends HttpServlet {
 				int i1 = employeeDAO.updateEmployee(employee, employees.get(i).getEmpId());
 			}
 
-			//全従業員情報を取得し、sessionオブジェクトに設定する
+			//全従業員情報を取得し、sessionオブジェクトに格納する
 			employees = employeeDAO.getAllEmployee();
 			session.setAttribute("employees", employees);
 
