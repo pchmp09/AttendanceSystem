@@ -23,8 +23,8 @@
 <h1>ログインページ</h1>
 <div>
 	<form action="./LoginCheckServlet" method="post">
-		id入力<input type="text" name="id" size=20 maxlength="18" />
-		<input type="submit" name="Logout" value="ログイン" autocomplete="off"/>
+		id入力<input type="text" name="id" size=20 maxlength="18" autocomplete="off"/>
+		<input type="submit" name="Logout" value="ログイン" />
 	</form>
 <br>
 <br>
